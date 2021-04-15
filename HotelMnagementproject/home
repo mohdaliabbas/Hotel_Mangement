@@ -1,181 +1,159 @@
-from tkinter import *
-import tkinter.messagebox as tmg
+import os
+from subprocess import call
 
-root=Tk()
-root.geometry("500x500")
-root.maxsize(500,500)
+import sys
+
+try:
+    from Tkinter import *
+except ImportError:
+    from tkinter import *
+
+try:
+    import ttk
+    py3 = False
+except ImportError:
+    import tkinter.ttk as ttk
+    py3 = True
+def advance_booking():
+    call(["python", "a.py"])
+def click_list():
+    call(["python", "part2"])
+# def click():
+#     call(["python", "listofguest.py"])
+def click_checkout():
+    call(["txt", "recors.txt"])
+# def click_getinfo():
+#     call(["python","part2"])
 
 
-can_widget=Canvas(root,width=10000 , height=10000)
-can_widget.pack()
-m=PhotoImage(file="C:\\Users\\azrah\\PycharmProjects\\hotel\\s.gif")
-can_widget.create_image(0, 0, anchor=NW, image=m)
-#the line goes from the point x1,y1 to x2,y2
-#can_widget.create_line(0,0,800,200,fill="red")
-#can_widget.create_line(0,200,800,0,fill="grey")
 
+class HOTEL_MANAGEMENT:
+    def __init__(self):
+        root = Tk()
+        '''This class configures and populates the toplevel window.
+           top is the toplevel containing window.'''
+        _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
+        _fgcolor = '#000000'  # X11 color: 'black'
+        _compcolor = '#ffffff' # X11 color: 'white'
+        _ana1color = '#ffffff' # X11 color: 'white'
+        _ana2color = '#ffffff' # X11 color: 'white'
+        font14 = "-family {Segoe UI} -size 15 -weight bold -slant "  \
+            "roman -underline 0 -overstrike 0"
+        font16 = "-family {Swis721 BlkCn BT} -size 40 -weight bold "  \
+            "-slant roman -underline 0 -overstrike 0"
+        font9 = "-family {Segoe UI} -size 9 -weight normal -slant "  \
+            "roman -underline 0 -overstrike 0"
 
-can_widget.create_rectangle(15,10,470,430)
-
-frame=Frame(can_widget ,width=800,height=800, borderwidth=10,relief=RAISED)
-
-frame.place(x=100,y=150)
-
-'''frame=Frame(root ,width=500,height=500, borderwidth=10,relief=RAISED)
-frame.place(x=100,y=150)'''
-
-
-l=Label(root,text="Booking!!",bg='red',relief=RAISED,font="comicsansms 16 bold")
-l.place(x=120,y=100)
-
-import pandas as pd
-#menu
-def show_records():
-    a=pd.read_csv(r"records.txt")
-    print(a)
-def quit():
-    b = tmg.askquestion("sure", "you want to exit!!")
-    print(b)
-    if b=='yes':
-        import sys; sys.exit()
-
-        print("Exit Click, so let's stop")
-
-counter=0
-def Save():
-    global counter
-    a=(f"{namevalue.get(),phonevalue.get(),gendervalue.get(),emailvalue.get(),paymentmodevalue.get(),foodservicevalue.get()}")
-    print(a)
-    a=tmg.Message("")
-mymenu = Menu(root)
-m1=Menu(mymenu,tearoff=0)
-m1.add_command(label="File",command=show_records)
-#m1.add_Seperator()
-m1.add_command(label="Save",command=Save)
-m1.add_command(label="Print",command=show_records)
-root.config(menu=mymenu)
-mymenu.add_cascade(label="File1",menu=m1)
-#2nd menu
-
-m2=Menu(mymenu,tearoff=0)
-m2.add_command(label="File",command=show_records)
-#m1.add_Seperator()
-m2.add_command(label="Exit",command=quit)
-m2.add_command(label="Print",command=show_records)
-root.config(menu=mymenu)
-mymenu.add_cascade(label="File1",menu=m1)
+        root.geometry("800x500")
+        root.title("HOTEL MANAGEMENT")
+        root.configure(background="#d9d9d9")
+        root.configure(highlightbackground="#d9d9d9")
+        root.configure(highlightcolor="black")
 
 
 
 
-#event handler
-def ali(event):
-   print(f"you clicked on the event!! at {event.x},{event.y}")
-def quit(event):
-    b = tmg.askquestion("sure", "you want to exit!!")
-    print(b)
-    if b=='yes':
-        import sys; sys.exit()
-        print("Exit Click, so let's stop")
+        self.menubar = Menu(root,font=font9,bg=_bgcolor,fg=_fgcolor)
+        root.configure(menu= self.menubar)
+
+
+
+        self.Frame1 = Frame(root)
+        self.Frame1.place(relx=0.02, rely=0.03, relheight=0.94, relwidth=0.96)
+        self.Frame1.configure(relief=GROOVE)
+        self.Frame1.configure(borderwidth="2")
+        self.Frame1.configure(relief=GROOVE)
+        self.Frame1.configure(background="#d9d9d9")
+        self.Frame1.configure(highlightbackground="#d9d9d9")
+        self.Frame1.configure(highlightcolor="black")
+        self.Frame1.configure(width=20)
+        self.Frame1.configure(height=20)
+
+        can_widget = Canvas(self.Frame1, width=20000, height=10000)
+        can_widget.pack()
+        m = PhotoImage(file="C:\\Users\\azrah\\PycharmProjects\\hotel\\s.gif")
+        can_widget.create_image(0, 0, anchor=NW, image=m)
+
+
+        self.Message6 = Message(self.Frame1)
+        self.Message6.place(relx=0.09, rely=0.01, relheight=0.15, relwidth=0.86)
+        self.Message6.configure(background="#d9d9d9")
+        self.Message6.configure(font=font16)
+        self.Message6.configure(foreground="#000000")
+        self.Message6.configure(highlightbackground="#d9d9d9")
+        self.Message6.configure(highlightcolor="black")
+        self.Message6.configure(text='''WELCOME''')
+        self.Message6.configure(width=791)
+
+        self.Button2 = Button(self.Frame1)
+        self.Button2.place(relx=0.18, rely=0.20, height=50, width=560)
+        self.Button2.configure(activebackground="#d9d9d9")
+        self.Button2.configure(activeforeground="#000000")
+        self.Button2.configure(background="#d9d9d9")
+        self.Button2.configure(disabledforeground="#bfbfbf")
+        self.Button2.configure(font=font14)
+        self.Button2.configure(foreground="#000000")
+        self.Button2.configure(highlightbackground="#d9d9d9")
+        # self.Button2.configure(highlightcolor="black")
+        self.Button2.configure(pady="0")
+        self.Button2.configure(text='''Advance booking''')
+        self.Button2.configure(width=7000)
+        self.Button2.configure(command=advance_booking)
+
+
+        self.Button3 = Button(self.Frame1)
+        self.Button3.place(relx=0.18, rely=0.33, height=120, width=566)
+        self.Button3.configure(activebackground="#d9d9d9")
+        self.Button3.configure(activeforeground="#000000")
+        self.Button3.configure(background="#d9d9d9")
+        self.Button3.configure(disabledforeground="#bfbfbf")
+        self.Button3.configure(font=font14)
+        self.Button3.configure(foreground="#000000")
+        self.Button3.configure(highlightbackground="#d9d9d9")
+        self.Button3.configure(highlightcolor="black")
+        self.Button3.configure(pady="0")
+        self.Button3.configure(text='''Billing!!''')
+        self.Button3.configure(width=566)
+        self.Button3.configure(command=click_list)
+
+
+        # self.Button4 = Button(self.Frame1)
+        # self.Button4.place(relx=0.18, y=0.31, height=220, width=566)
+        # self.Button4.configure(activebackground="#d9d9d9")
+        # self.Button4.configure(activeforeground="#000000")
+        # self.Button4.configure(background="#d9d9d9")
+        # self.Button4.configure(disabledforeground="#bfbfbf")
+        # self.Button4.configure(font=font14)
+        # self.Button4.configure(foreground="#000000")
+        # self.Button4.configure(highlightbackground="#d9d9d9")
+        # self.Button4.configure(highlightcolor="black")
+        # self.Button4.configure(pady="0")
+        # self.Button4.configure(text='''Check list!!''')
+        # self.Button4.configure(width=566)
+        # self.Button4.configure(command=click)
 
 
 
 
+        self.Button6 = Button(self.Frame1)
+        self.Button6.place(relx=0.18, rely=0.77, height=103, width=566)
+        self.Button6.configure(activebackground="#d9d9d9")
+        self.Button6.configure(activeforeground="#000000")
+        self.Button6.configure(background="#d9d9d9")
+        self.Button6.configure(disabledforeground="#bfbfbf")
+        self.Button6.configure(font=font14)
+        self.Button6.configure(foreground="#000000")
+        self.Button6.configure(highlightbackground="#d9d9d9")
+        self.Button6.configure(highlightcolor="black")
+        self.Button6.configure(pady="0")
+        self.Button6.configure(text='''EXIT''')
+        self.Button6.configure(width=566)
+        self.Button6.configure(command=quit)
+        root.mainloop()
 
-#widget for exit
-widget=Button(frame,text="exit")
-widget.grid()
 
-
-
-widget.bind('<Button-1>',quit)
-#widget.bind('<Double-1>',quit)
-
-
-
-
-
-
-#defgetvals
-counter=0
-def getvals():
-    c=tmg.showinfo("booked bill",100*int(daysvalue.get()))
-    print(c)
-    global counter
-
-    a=(f"{namevalue.get(),phonevalue.get(),gendervalue.get(),emailvalue.get(),daysvalue.get(),100*int(daysvalue.get()),foodservicevalue.get()}")
-    print(a)
+if __name__ == '__main__':
+    GUUEST=HOTEL_MANAGEMENT()
 
 
 
-    with open("records.txt","a") as f:
-        f.write(f"{namevalue.get(),phonevalue.get(),gendervalue.get(),emailvalue.get(),daysvalue.get(),100*int(daysvalue.get()),foodservicevalue.get()}\n")
-        if foodservicevalue.get()==1:
-            counter+=1
-        else:
-            counter+=1
-            print("booked!!")
-        f.write(f"{'booked',counter}")
-
-
-
-
-
-
-#Label(name outside box)
-name=Label(frame,text="Name").grid(row=1,column=2,pady=4)
-phone=Label(frame,text="phone").grid(row=2,column=2,pady=4)
-gender=Label(frame,text="gender").grid(row=3,column=2,pady=4)
-email=Label(frame,text="email").grid(row=4,column=2,pady=4)
-Days=Label(frame,text="days").grid(row=5,column=2,pady=4)
-# bill=Label(frame,text="bill").grid(row=6,column=2,pady=4)
-
-
-
-
-#initialize variable values
-namevalue=StringVar()
-phonevalue=StringVar()
-gendervalue=IntVar()
-emailvalue=StringVar()
-daysvalue=StringVar()
-foodservicevalue=IntVar()
-# billvalue=IntVar()
-
-#entry
-nameentry=Entry(frame,textvariable=namevalue)
-phoneentry=Entry(frame,textvariable=phonevalue)
-#genderentry=Entry(frame,textvariable=gendervalue)
-
-#gendervalue.set(1)
-#Label(frame,text="what would u like to have sir?", justify=LEFT,padx=14,font="lucida 19 bold").grid()
-radio=Radiobutton(frame,text="Male",padx=14,variable=gendervalue,value=1).place(x=100,y=90)
-radio=Radiobutton(frame,text="Female",padx=14,variable=gendervalue,value=2).place(x=160,y=90)
-emailentry=Entry(frame,textvariable=emailvalue)
-# paymentmodeentry=Entry(frame,textvariable=paymentmodevalue)
-# billentry=Entry(frame,textvariable=billvalue)
-daysentry=Entry(frame,textvariable=daysvalue)
-
-
-
-#entry pack
-nameentry.grid(row=1,column=3,padx=30)
-phoneentry.grid(row=2,column=3,padx=30)
-#genderentry.grid(row=3,column=3,padx=30)
-emailentry.grid(row=4,column=3,padx=30)
-daysentry.grid(row=5,column=3,padx=30)
-# billentry.grid(row=6,column=3,padx=30)
-
-
-#button
-Button(frame,text="Submit",command=getvals).grid(row=11,column=3)
-
-
-#checkbox
-# foodservice=Checkbutton(frame,text="Accept!!",variable=foodservicevalue).grid(row=9,column=3)
-
-
-
-
-
-root.mainloop()
