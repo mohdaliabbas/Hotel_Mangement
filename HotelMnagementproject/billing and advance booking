@@ -25,7 +25,7 @@ frame.place(x=100,y=150)
 frame.place(x=100,y=150)'''
 
 
-l=Label(root,text="Billing!!",bg='red',relief=RAISED,font="comicsansms 16 bold")
+l=Label(root,text="Booking!!",bg='red',relief=RAISED,font="comicsansms 16 bold")
 l.place(x=120,y=100)
 
 import pandas as pd
@@ -46,6 +46,7 @@ def Save():
     global counter
     a=(f"{namevalue.get(),phonevalue.get(),gendervalue.get(),emailvalue.get(),paymentmodevalue.get(),foodservicevalue.get()}")
     print(a)
+    a=tmg.Message("")
 mymenu = Menu(root)
 m1=Menu(mymenu,tearoff=0)
 m1.add_command(label="File",command=show_records)
@@ -112,8 +113,9 @@ def getvals():
         if foodservicevalue.get()==1:
             counter+=1
         else:
-            print("invalid!!")
-        f.write(f"{counter}")
+            counter+=1
+            print("booked!!")
+        f.write(f"{'booked',counter}")
 
 
 
@@ -126,7 +128,7 @@ phone=Label(frame,text="phone").grid(row=2,column=2,pady=4)
 gender=Label(frame,text="gender").grid(row=3,column=2,pady=4)
 email=Label(frame,text="email").grid(row=4,column=2,pady=4)
 Days=Label(frame,text="days").grid(row=5,column=2,pady=4)
-bill=Label(frame,text="bill").grid(row=6,column=2,pady=4)
+# bill=Label(frame,text="bill").grid(row=6,column=2,pady=4)
 
 
 
@@ -138,7 +140,7 @@ gendervalue=IntVar()
 emailvalue=StringVar()
 daysvalue=StringVar()
 foodservicevalue=IntVar()
-billvalue=IntVar()
+# billvalue=IntVar()
 
 #entry
 nameentry=Entry(frame,textvariable=namevalue)
@@ -147,11 +149,11 @@ phoneentry=Entry(frame,textvariable=phonevalue)
 
 #gendervalue.set(1)
 #Label(frame,text="what would u like to have sir?", justify=LEFT,padx=14,font="lucida 19 bold").grid()
-radio=Radiobutton(frame,text="Male",padx=14,variable=gendervalue,value=1).place(x=90,y=90)
+radio=Radiobutton(frame,text="Male",padx=14,variable=gendervalue,value=1).place(x=100,y=90)
 radio=Radiobutton(frame,text="Female",padx=14,variable=gendervalue,value=2).place(x=160,y=90)
 emailentry=Entry(frame,textvariable=emailvalue)
 # paymentmodeentry=Entry(frame,textvariable=paymentmodevalue)
-billentry=Entry(frame,textvariable=billvalue)
+# billentry=Entry(frame,textvariable=billvalue)
 daysentry=Entry(frame,textvariable=daysvalue)
 
 
@@ -162,7 +164,7 @@ phoneentry.grid(row=2,column=3,padx=30)
 #genderentry.grid(row=3,column=3,padx=30)
 emailentry.grid(row=4,column=3,padx=30)
 daysentry.grid(row=5,column=3,padx=30)
-billentry.grid(row=6,column=3,padx=30)
+# billentry.grid(row=6,column=3,padx=30)
 
 
 #button
@@ -170,7 +172,7 @@ Button(frame,text="Submit",command=getvals).grid(row=11,column=3)
 
 
 #checkbox
-foodservice=Checkbutton(frame,text="Accept!!",variable=foodservicevalue).grid(row=9,column=3)
+# foodservice=Checkbutton(frame,text="Accept!!",variable=foodservicevalue).grid(row=9,column=3)
 
 
 
