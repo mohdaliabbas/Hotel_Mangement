@@ -8,7 +8,7 @@ root.maxsize(500,500)
 
 can_widget=Canvas(root,width=10000 , height=10000)
 can_widget.pack()
-m=PhotoImage(file="C:\\Users\\azrah\\PycharmProjects\\hotel\\s.gif")
+m=PhotoImage(file=".sgif")
 can_widget.create_image(0, 0, anchor=NW, image=m)
 #the line goes from the point x1,y1 to x2,y2
 #can_widget.create_line(0,0,800,200,fill="red")
